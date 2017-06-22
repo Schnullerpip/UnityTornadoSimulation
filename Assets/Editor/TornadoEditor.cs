@@ -48,6 +48,8 @@ public class TornadoEditor : Editor
 	{
 		if(!visualize)
 			return;
+
+		Undo.RecordObject(tornadoScript, tornadoScript.name+ " Changes");
 		
 		Handles.color = Color.red;
 

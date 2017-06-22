@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4763467156823460}
-  - component: {fileID: 114852131184592688}
+  - component: {fileID: 114478924347687494}
   m_Layer: 0
   m_Name: Box Spawner
   m_TagString: Untagged
@@ -34,13 +34,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691291706015108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -31.01, y: 51.12, z: 0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114852131184592688
+--- !u!114 &114478924347687494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,9 +48,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1691291706015108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9623844df0f48838d9feff61db10da, type: 3}
+  m_Script: {fileID: 11500000, guid: 528d897abcef5484aa720563f4889ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1045838086892202, guid: d8cfc85ef8d284a7d899f2ea69977a3e, type: 2}
-  spawnRate: 0.1
-  range: {x: 15, y: 15}
+  prefabs:
+  - {fileID: 1045838086892202, guid: d8cfc85ef8d284a7d899f2ea69977a3e, type: 2}
+  - {fileID: 1045838086892202, guid: 8c818d5d2f04f4cd581d81abce58f26c, type: 2}
+  - {fileID: 1045838086892202, guid: f1a42390c19ed460088175ca39143629, type: 2}
+  - {fileID: 1045838086892202, guid: d8cfc85ef8d284a7d899f2ea69977a3e, type: 2}
+  spawn_rythm_in_seconds: 0.001
+  spawn_velocity: 0
+  instances_per_pool: 750
+  range: 15

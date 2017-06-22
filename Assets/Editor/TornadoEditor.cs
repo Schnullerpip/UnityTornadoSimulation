@@ -7,7 +7,7 @@ using UnityEditor;
 [CustomEditor( typeof( TornadoScript ))]
 public class TornadoEditor : Editor
 {
-	static bool visualize = true;
+	static bool visualize;
 
 	static TornadoScript tornadoScript;
 

@@ -32,12 +32,12 @@ public class Caught : MonoBehaviour
 
 
         //adjust spring strength relative to tornado distance
-	    float distance = Vector3.Distance(transform.position, tornadoReference.transform.position);
+	    //float distance = Vector3.Distance(transform.position, tornadoReference.transform.position);
 
 	    //spring.spring =  tornadoReference.tornadoCollider.radius - Vector3.Distance(transform.position, tornadoReference.transform.position) +
      //                    (tornadoReference.minDistance);
 
-        Debug.Log(spring.spring + " - " + rigid.velocity);
+        //Debug.Log(spring.spring + " - " + rigid.velocity);
 
         /*this is bad
         transform.RotateAround(tornadoReference.transform.position, tornadoReference.GetRotationAxis(), tornadoReference.GetTornadoStrength());*/
@@ -47,7 +47,7 @@ public class Caught : MonoBehaviour
         //project
         Vector3 projection = Vector3.ProjectOnPlane(direction, tornadoReference.GetRotationAxis());
         projection.Normalize();
-	    Vector3 normal = Quaternion.AngleAxis(90, tornadoReference.GetRotationAxis()) * projection;
+	    Vector3 normal = Quaternion.AngleAxis(110, tornadoReference.GetRotationAxis()) * projection;
         normal = Quaternion.AngleAxis(20, projection) * normal;
         Debug.DrawRay(transform.position, normal*10, Color.red);
 
@@ -77,7 +77,7 @@ public class Caught : MonoBehaviour
         spring.autoConfigureConnectedAnchor = false;
 
         //set initial position of the caught object relative to its position and the tornado
-        Vector3 initialPosition = tornadoRef.transform.position;
+        Vector3 initialPosition = Vector3.zero;
         initialPosition.y = transform.position.y;
         spring.connectedAnchor = initialPosition;
 

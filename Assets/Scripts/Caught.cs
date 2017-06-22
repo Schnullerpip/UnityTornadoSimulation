@@ -32,26 +32,24 @@ public class Caught : MonoBehaviour
 
 
         //adjust spring strength relative to tornado distance
-	    //float distance = Vector3.Distance(transform.position, tornadoReference.transform.position);
+        //float distance = Vector3.Distance(transform.position, tornadoReference.transform.position);
 
-	    //spring.spring =  tornadoReference.tornadoCollider.radius - Vector3.Distance(transform.position, tornadoReference.transform.position) +
-     //                    (tornadoReference.minDistance);
+        //spring.spring = tornadoReference.tornadoCollider.radius - Vector3.Distance(transform.position, tornadoReference.transform.position);// + (tornadoReference.minDistance);
 
-        //Debug.Log(spring.spring + " - " + rigid.velocity);
 
         /*this is bad
         transform.RotateAround(tornadoReference.transform.position, tornadoReference.GetRotationAxis(), tornadoReference.GetTornadoStrength());*/
 
         //this is better
-	    Vector3 direction = transform.position - tornadoReference.transform.position;
+        Vector3 direction = transform.position - tornadoReference.transform.position;
         //project
         Vector3 projection = Vector3.ProjectOnPlane(direction, tornadoReference.GetRotationAxis());
         projection.Normalize();
-	    Vector3 normal = Quaternion.AngleAxis(110, tornadoReference.GetRotationAxis()) * projection;
-        normal = Quaternion.AngleAxis(tornadoReference.lift, projection) * normal;
+	    Vector3 normal = Quaternion.AngleAxis(130, tornadoReference.GetRotationAxis()) * projection;
+        normal = Quaternion.AngleAxis(tornadoReference.lift/* - Random.Range(-5.0f, 5.0f)*/, projection) * normal;
         Debug.DrawRay(transform.position, normal*10, Color.red);
 
-        rigid.AddForce(normal*tornadoReference.GetTornadoStrength(), ForceMode.Force);
+        rigid.AddForce(normal*tornadoReference.GetStrength(), ForceMode.Force);
         
     }
 
@@ -92,7 +90,7 @@ public class Caught : MonoBehaviour
 
     IEnumerator refreshImpulse()
     {
-        transform.RotateAround(tornadoReference.transform.position, tornadoReference.GetRotationAxis(), tornadoReference.GetTornadoStrength());
+        transform.RotateAround(tornadoReference.transform.position, tornadoReference.GetRotationAxis(), tornadoReference.GetStrength());
         yield return new WaitForSeconds(0.5f);
     }
 }

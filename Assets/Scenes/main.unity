@@ -109,6 +109,48 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &386610149
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 93.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 47.074745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915570535710776, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f39a8b6a132cc134fb08a6a97294476e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1066502790 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1652572912574618, guid: 30ef050a41117ff4885c662a1a57febe,
@@ -126,6 +168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+--- !u!4 &1066502792 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4147668758951000, guid: 30ef050a41117ff4885c662a1a57febe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1754540398}
 --- !u!1 &1413543734
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +253,7 @@ Transform:
   m_LocalScale: {x: 15.330499, y: 31.380482, z: 6.440482}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.93}
 --- !u!1001 &1754540398
 Prefab:
@@ -245,7 +292,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4147668758951000, guid: 30ef050a41117ff4885c662a1a57febe, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30ef050a41117ff4885c662a1a57febe, type: 2}
@@ -287,7 +334,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4763467156823460, guid: 33b3c64e95235406abab17736da6325a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1691291706015108, guid: 33b3c64e95235406abab17736da6325a, type: 2}
       propertyPath: m_IsActive
@@ -359,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2059245883
 GameObject:
@@ -374,7 +421,7 @@ GameObject:
   - component: {fileID: 2059245884}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,7 +490,7 @@ Transform:
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118017160
 GameObject:
@@ -531,6 +578,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 42.6, z: -53.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1066502792}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 35.473003, y: 0, z: 0}

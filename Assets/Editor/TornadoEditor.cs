@@ -41,7 +41,7 @@ public class TornadoEditor : Editor
 		Handles.DrawLine(tornado.transform.position, tornado.transform.position + tornado.rotationAxis * 20);
 
 		Handles.color = Color.green;
-		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.GetComponent<CapsuleCollider>().radius);
+		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.tornadoCollider.radius);
 	}
 
 	void OnSceneGUI()

@@ -6,16 +6,25 @@ using UnityEngine;
 public class TornadoScript : MonoBehaviour
 {
 
+    [Tooltip("atributes, that configure the internal springs, that are attached to each caught object")]
     public float springForce, damper, maxDistance, minDistance;
-    public float tornadoStrength = 20;
+
+    [Tooltip("the axis, that the caught objects will rotate around")]
     public Vector3 rotationAxis = new Vector3(0, 1, 0);
+
     public CapsuleCollider tornadoCollider;
+
+    [Tooltip("angle that is added to the object's velocity (higher lift -> quicker on top)")]
     public float lift;
+
+    [Tooltip("the force that will drive the caught objects around the tornados center")]
+    public float tornadoStrength;
 
 	// Use this for initialization
 	void Start ()
 	{
-	    tornadoCollider = GetComponent<CapsuleCollider>();
+        //normalize the rotation axis given by the user
+        rotationAxis.Normalize();
 	}
 	
     void OnTriggerEnter(Collider other)
@@ -43,14 +52,15 @@ public class TornadoScript : MonoBehaviour
         }
     }
 
+    public float GetStrength()
+    {
+        return tornadoStrength;
+    }
+
+    //the axis the caught objects rotate around
     public Vector3 GetRotationAxis()
     {
         return rotationAxis;
-    }
-
-    public float GetTornadoStrength()
-    {
-        return tornadoStrength;
     }
 
     //Editor convenience

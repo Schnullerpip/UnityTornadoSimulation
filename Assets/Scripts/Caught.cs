@@ -48,7 +48,7 @@ public class Caught : MonoBehaviour
         Vector3 projection = Vector3.ProjectOnPlane(direction, tornadoReference.GetRotationAxis());
         projection.Normalize();
 	    Vector3 normal = Quaternion.AngleAxis(110, tornadoReference.GetRotationAxis()) * projection;
-        normal = Quaternion.AngleAxis(30, projection) * normal;
+        normal = Quaternion.AngleAxis(tornadoReference.lift, projection) * normal;
         Debug.DrawRay(transform.position, normal*10, Color.red);
 
         rigid.AddForce(normal*tornadoReference.GetTornadoStrength(), ForceMode.Force);

@@ -9,11 +9,12 @@ public class TornadoScript : MonoBehaviour
     public float springForce, damper, maxDistance, minDistance;
     public float tornadoStrength = 20;
     public Vector3 rotationAxis = new Vector3(0, 1, 0);
+    public CapsuleCollider tornadoCollider;
 
 	// Use this for initialization
 	void Start ()
 	{
-        rotationAxis.Normalize();
+	    tornadoCollider = GetComponent<CapsuleCollider>();
 	}
 	
     void OnTriggerEnter(Collider other)

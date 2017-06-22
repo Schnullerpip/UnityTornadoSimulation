@@ -7,7 +7,7 @@ using UnityEditor;
 [CustomEditor( typeof( TornadoScript ))]
 public class TornadoEditor : Editor
 {
-	static bool visualize = true;
+	static bool visualize;
 
 	static TornadoScript tornadoScript;
 
@@ -41,13 +41,15 @@ public class TornadoEditor : Editor
 		Handles.DrawLine(tornado.transform.position, tornado.transform.position + tornado.rotationAxis * 20);
 
 		Handles.color = Color.green;
-		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.GetComponent<CapsuleCollider>().radius);
+		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.tornadoCollider.radius);
 	}
 
 	void OnSceneGUI()
 	{
 		if(!visualize)
 			return;
+
+		Undo.RecordObject(tornadoScript, tornadoScript.name+ " Changes");
 		
 		Handles.color = Color.red;
 

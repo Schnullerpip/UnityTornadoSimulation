@@ -7,40 +7,66 @@ using UnityEditor;
 [CustomEditor( typeof( TornadoScript ))]
 public class TornadoEditor : Editor
 {
-	private TornadoScript tornado;
+	static bool visualize = true;
+
+	static TornadoScript tornadoScript;
+
+	public override void OnInspectorGUI(){
+		DrawDefaultInspector();	
+		visualize = EditorGUILayout.Toggle("Visualize", visualize);
+	}
 
 	void OnEnable()
 	{
-		if(tornado == null)
-			tornado = target as TornadoScript;
+		if(tornadoScript == null)
+			tornadoScript = target as TornadoScript;
 	}
 
-	void OnSceneGUI( )
+	[DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NonSelected)]
+	static void DrawGizmos(TornadoScript tornado, GizmoType gizmoType)
 	{
+		if(!visualize)
+			return;
+
 		if( tornado == null || tornado.gameObject == null )
 			return;
 
-		tornado.minDistance = CircleHandle(tornado.minDistance,Color.red);
-		tornado.maxDistance = CircleHandle(tornado.maxDistance,Color.yellow);
+		Handles.color = Color.red;
+		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.minDistance);
 
-		tornado.maxDistance = Mathf.Max(tornado.maxDistance,tornado.minDistance);
+		Handles.color = Color.yellow;
+		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.maxDistance);
 
 		Handles.color = Color.blue;
 		Handles.DrawLine(tornado.transform.position, tornado.transform.position + tornado.rotationAxis * 20);
+
+		Handles.color = Color.green;
+		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.GetComponent<CapsuleCollider>().radius);
 	}
 
-	float CircleHandle(float value, Color color)
+	void OnSceneGUI()
 	{
-		Handles.color = color;
+		if(!visualize)
+			return;
+		
+		Handles.color = Color.red;
 
+		tornadoScript.maxDistance = Handles.ScaleValueHandle(tornadoScript.maxDistance,
+			tornadoScript.transform.position + new Vector3(tornadoScript.maxDistance,0,0),
+			Quaternion.identity,
+			2,
+			Handles.CubeHandleCap,
+			2);
 
-		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, value);
+		Handles.color = Color.yellow;
 
-		return Handles.ScaleValueHandle(value,
-				tornado.transform.position + new Vector3(value,0,0),
-				Quaternion.identity,
-				2,
-				Handles.CubeHandleCap,
-				2);
+		tornadoScript.minDistance = Handles.ScaleValueHandle(tornadoScript.minDistance,
+			tornadoScript.transform.position + new Vector3(tornadoScript.minDistance,0,0),
+			Quaternion.identity,
+			2,
+			Handles.CubeHandleCap,
+			2);
+		
+		tornadoScript.maxDistance = Mathf.Max(tornadoScript.maxDistance,tornadoScript.minDistance);
 	}
 }

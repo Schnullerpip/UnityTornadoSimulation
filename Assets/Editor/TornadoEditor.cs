@@ -7,14 +7,8 @@ using UnityEditor;
 [CustomEditor( typeof( TornadoScript ))]
 public class TornadoEditor : Editor
 {
-	static bool visualize;
-
 	static TornadoScript tornadoScript;
 
-	public override void OnInspectorGUI(){
-		DrawDefaultInspector();	
-		visualize = EditorGUILayout.Toggle("Visualize", visualize);
-	}
 
 	void OnEnable()
 	{
@@ -25,8 +19,6 @@ public class TornadoEditor : Editor
 	[DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NonSelected)]
 	static void DrawGizmos(TornadoScript tornado, GizmoType gizmoType)
 	{
-		if(!visualize)
-			return;
 
 		if( tornado == null || tornado.gameObject == null )
 			return;
@@ -42,17 +34,20 @@ public class TornadoEditor : Editor
 
 		Handles.color = Color.green;
 		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.tornadoCollider.radius);
+
+		Handles.color = new Color(0,0,1,0.3f);
+
+		Handles.DrawSolidArc(tornadoScript.transform.position,
+			Vector3.left,
+			Vector3.forward,
+			tornadoScript.lift, tornadoScript.minDistance);
 	}
 
 	void OnSceneGUI()
 	{
-		if(!visualize)
-			return;
-
 		Undo.RecordObject(tornadoScript, tornadoScript.name+ " Changes");
 		
-		Handles.color = Color.red;
-
+		Handles.color = Color.yellow;
 		tornadoScript.maxDistance = Handles.ScaleValueHandle(tornadoScript.maxDistance,
 			tornadoScript.transform.position + new Vector3(tornadoScript.maxDistance,0,0),
 			Quaternion.identity,
@@ -60,8 +55,7 @@ public class TornadoEditor : Editor
 			Handles.CubeHandleCap,
 			2);
 
-		Handles.color = Color.yellow;
-
+		Handles.color = Color.red;
 		tornadoScript.minDistance = Handles.ScaleValueHandle(tornadoScript.minDistance,
 			tornadoScript.transform.position + new Vector3(tornadoScript.minDistance,0,0),
 			Quaternion.identity,
@@ -70,5 +64,16 @@ public class TornadoEditor : Editor
 			2);
 		
 		tornadoScript.maxDistance = Mathf.Max(tornadoScript.maxDistance,tornadoScript.minDistance);
+
+		Handles.color = new Color(0,0,1,0.3f);
+
+		tornadoScript.lift = Handles.ScaleValueHandle(tornadoScript.lift,
+			tornadoScript.transform.position + Quaternion.AngleAxis(tornadoScript.lift,Vector3.left) * Vector3.forward * tornadoScript.minDistance,
+			Quaternion.identity,
+			2,
+			Handles.SphereHandleCap,
+			2);
+
+		tornadoScript.lift = Mathf.Clamp(tornadoScript.lift,0,90);
 	}
 }

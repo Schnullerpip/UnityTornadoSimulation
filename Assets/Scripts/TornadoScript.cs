@@ -15,6 +15,7 @@ public class TornadoScript : MonoBehaviour
     public CapsuleCollider tornadoCollider;
 
     [Tooltip("angle that is added to the object's velocity (higher lift -> quicker on top)")]
+	[Range(0,90)]
     public float lift;
 
     [Tooltip("the force that will drive the caught objects around the tornados center")]

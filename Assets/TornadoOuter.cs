@@ -21,7 +21,6 @@ public class TornadoOuter : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("aha");
         Vector3 pull = transform.position - other.transform.position;
         if (other.attachedRigidbody && pull.magnitude > inner.tornadoCollider.radius)
         {

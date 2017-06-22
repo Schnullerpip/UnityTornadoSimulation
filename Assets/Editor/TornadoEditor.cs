@@ -19,10 +19,6 @@ public class TornadoEditor : Editor
 	[DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NonSelected)]
 	static void DrawGizmos(TornadoScript tornado, GizmoType gizmoType)
 	{
-
-		if( tornado == null || tornado.gameObject == null )
-			return;
-
 		Handles.color = Color.red;
 		Handles.DrawWireDisc(tornado.transform.position, Vector3.up, tornado.minDistance);
 
@@ -37,14 +33,17 @@ public class TornadoEditor : Editor
 
 		Handles.color = new Color(0,0,1,0.3f);
 
-		Handles.DrawSolidArc(tornadoScript.transform.position,
+		Handles.DrawSolidArc(tornado.transform.position,
 			Vector3.left,
 			Vector3.forward,
-			tornadoScript.lift, tornadoScript.minDistance);
+			tornado.lift, tornado.minDistance);
 	}
 
 	void OnSceneGUI()
 	{
+		if( tornadoScript == null || tornadoScript.gameObject == null )
+			return;
+
 		Undo.RecordObject(tornadoScript, tornadoScript.name+ " Changes");
 		
 		Handles.color = Color.yellow;

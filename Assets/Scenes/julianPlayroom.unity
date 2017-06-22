@@ -1007,7 +1007,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4147668758951000, guid: 30ef050a41117ff4885c662a1a57febe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -84.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147668758951000, guid: 30ef050a41117ff4885c662a1a57febe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1049,7 +1049,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4763467156823460, guid: 33b3c64e95235406abab17736da6325a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -68.3
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4763467156823460, guid: 33b3c64e95235406abab17736da6325a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1073,7 +1073,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1691291706015108, guid: 33b3c64e95235406abab17736da6325a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478924347687494, guid: 33b3c64e95235406abab17736da6325a,
+        type: 2}
+      propertyPath: instances_per_pool
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478924347687494, guid: 33b3c64e95235406abab17736da6325a,
+        type: 2}
+      propertyPath: spawn_rythm_in_seconds
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33b3c64e95235406abab17736da6325a, type: 2}

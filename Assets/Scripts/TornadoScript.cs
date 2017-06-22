@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class TornadoScript : MonoBehaviour
 {
 
@@ -50,5 +50,15 @@ public class TornadoScript : MonoBehaviour
     public float GetTornadoStrength()
     {
         return tornadoStrength;
+    }
+
+    //Editor convenience
+    void Reset()
+    {
+        if (!tornadoCollider)
+        {
+            tornadoCollider = gameObject.GetComponent<CapsuleCollider>();
+            tornadoCollider.isTrigger = true;
+        }
     }
 }

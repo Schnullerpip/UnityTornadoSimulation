@@ -23,11 +23,21 @@ public class Caught : MonoBehaviour
         Vector3 newPosition = spring.connectedAnchor;
         newPosition.y = transform.position.y;
         spring.connectedAnchor = newPosition;
-    }
+
+	}
 
     void FixedUpdate()
     {
         //rotate object around tornado center
+
+
+        //adjust spring strength relative to tornado distance
+	    float distance = Vector3.Distance(transform.position, tornadoReference.transform.position);
+
+	    //spring.spring =  tornadoReference.tornadoCollider.radius - Vector3.Distance(transform.position, tornadoReference.transform.position) +
+     //                    (tornadoReference.minDistance);
+
+        Debug.Log(spring.spring + " - " + rigid.velocity);
 
         /*this is bad
         transform.RotateAround(tornadoReference.transform.position, tornadoReference.GetRotationAxis(), tornadoReference.GetTornadoStrength());*/
@@ -37,8 +47,8 @@ public class Caught : MonoBehaviour
         //project
         Vector3 projection = Vector3.ProjectOnPlane(direction, tornadoReference.GetRotationAxis());
         projection.Normalize();
-	    Vector3 normal = Quaternion.AngleAxis(160, tornadoReference.GetRotationAxis()) * projection;
-        normal = Quaternion.AngleAxis(60, projection) * normal;
+	    Vector3 normal = Quaternion.AngleAxis(90, tornadoReference.GetRotationAxis()) * projection;
+        normal = Quaternion.AngleAxis(20, projection) * normal;
         Debug.DrawRay(transform.position, normal*10, Color.red);
 
         rigid.AddForce(normal*tornadoReference.GetTornadoStrength(), ForceMode.Force);

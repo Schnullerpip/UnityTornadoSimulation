@@ -10,6 +10,8 @@ public class TornadoScript : MonoBehaviour
     public float tornadoStrength = 20;
     public Vector3 rotationAxis = new Vector3(0, 1, 0);
     public CapsuleCollider tornadoCollider;
+
+	[Range(0,90)]
     public float lift;
 
 	// Use this for initialization

@@ -30,6 +30,7 @@ public class TornadoScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.attachedRigidbody) return;
+        if (other.attachedRigidbody.isKinematic) return;
 
         Caught caught = other.GetComponent<Caught>();
         if (!caught)

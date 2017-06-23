@@ -20,7 +20,7 @@ public class TheJointening : MonoBehaviour {
 
 			foreach (var n in neighbours) 
 			{
-				if(n.CompareTag("EditorOnly"))
+				if(n.CompareTag("floor"))
 					continue;
 				if(n.attachedRigidbody == rigid)
 					continue;

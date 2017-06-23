@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4147668758951000}
+  - component: {fileID: 114607480852757850}
   m_Layer: 0
   m_Name: Tornado
   m_TagString: Untagged
@@ -229,6 +230,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inner: {fileID: 114773359736196512}
+--- !u!114 &114607480852757850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652572912574618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e874583fdad14dea8f5f9e4a12ce12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
 --- !u!114 &114773359736196512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,6 +271,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 30
-  m_Height: 80
+  m_Height: 146.65189
   m_Direction: 1
-  m_Center: {x: -0.23362923, y: 15, z: 0}
+  m_Center: {x: -0.23362923, y: 48.325943, z: 0}

@@ -20,15 +20,15 @@ public class TheJointening : MonoBehaviour {
 
 			foreach (var n in neighbours) 
 			{
-				if(n.CompareTag("EditorOnly"))
+				if(n.CompareTag("Floor"))
 					continue;
 				if(n.attachedRigidbody == rigid)
 					continue;
 
-				FixedJoint spring = n.gameObject.AddComponent<FixedJoint>();
-				spring.connectedBody = rigid;
-				spring.breakForce = breakforce + Mathf.Pow(32 - n.transform.position.y, heightMulti);
-				spring.breakTorque = breakforce + Mathf.Pow(32 - n.transform.position.y, heightMulti)  / 2;
+				FixedJoint joints = n.gameObject.AddComponent<FixedJoint>();
+				joints.connectedBody = rigid;
+				joints.breakForce = breakforce + Mathf.Pow(32 - n.transform.position.y, heightMulti);
+				joints.breakTorque = breakforce + Mathf.Pow(32 - n.transform.position.y, heightMulti)  / 2;
 			}
 		}
  	}

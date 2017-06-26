@@ -26,6 +26,8 @@ public class Caught : MonoBehaviour
 
 	}
 
+	Vector3 norm;
+
     void FixedUpdate()
     {
         //rotate object around tornado center
@@ -47,11 +49,16 @@ public class Caught : MonoBehaviour
         projection.Normalize();
 	    Vector3 normal = Quaternion.AngleAxis(130, tornadoReference.GetRotationAxis()) * projection;
         normal = Quaternion.AngleAxis(tornadoReference.lift/* - Random.Range(-5.0f, 5.0f)*/, projection) * normal;
-        Debug.DrawRay(transform.position, normal*10, Color.red);
-
+		norm = normal;
         rigid.AddForce(normal*tornadoReference.GetStrength(), ForceMode.Force);
         
     }
+
+	void LateUpdate()
+	{
+		Debug.DrawRay(transform.position, norm*10, Color.red);
+
+	}
 
     //call this when tornadoReference already exists
     public void Init(TornadoScript tornadoRef, float springForce, float damper, float maxDistance, float minDistance)
